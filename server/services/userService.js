@@ -28,15 +28,18 @@ export const update = async (user) => {
 
 
 export const deleteById = async (id) => {
-	//delete one
-	//deleteMany
 	const User = models.User;
-	// console.log(models.User)
-	let result = await User.deleteOne(id);
-	// console.log(result)
-	return result;
+	/**
+	 * if the user is not null, delete it
+	 * return user not found
+	 */
+	let model = await User.findById(id);
+	if (model) {
+		let result = await User.deleteOne({ _id: id });
+		return result;
+	};
 
-
+	return new Error('User not found by the id: ' + id);
 }
 
 

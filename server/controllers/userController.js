@@ -23,16 +23,26 @@ const putHandler = async (req, res) => {
 
 const deleteHandler = async (req, res) => {
 	const id = req.params.id;
-	// console.log(req.params.id)
-	await deleteById(id);
-	res.status(200).send("User deleted");
+	/**
+	 * if result is an error, handle the error
+	 * else return success
+	 */
+	const result = await deleteById(id);
+	if (result instanceof Error) {
+		res.status(404).send(result.message);
+	}
+	else {
+		res.status(200).send("User deleted");
+	}
+
+
 }
 
 
 router.get('/', getHandler);
 router.post('/', postHandler);
 router.put('/', putHandler);
-router.delete('/', deleteHandler);
+router.delete('/:id', deleteHandler);
 
 const configure = (app) => {
 	app.use('/users', router);

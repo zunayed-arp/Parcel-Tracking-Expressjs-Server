@@ -1,0 +1,19 @@
+git comment to delete all initial files--> git pull --prune
+
+**es6 module import/export manage  way in nodejs -> npm install esm
+--esm handle file es6 import/export in  nodejs
+
+telling the nodemon which type of packagin it to use: nodemon -r esm index.js
+
+
+
+
+query: localhost:3000/users?id=100 -->> user dynamic vabe kono kisu khujte chaile/parameters jana na thakle query use korte hobe.
+params: localhost:3000/users/100->> kono kisu permanent kore dile params er maddhome kaj korte hobe.
+
+
+both commands and it will stop all node process:
+----------------------------------------------
+killall 9 node
+pkill node
+npm start 
