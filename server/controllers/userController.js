@@ -21,21 +21,26 @@ const putHandler = async (req, res) => {
 };
 
 
-const deleteHandler = async (req, res) => {
-	const id = req.params.id;
+const deleteHandler = async (req, res, next) => {
 	/**
-	 * if result is an error, handle the error
-	 * else return success
-	 */
-	const result = await deleteById(id);
-	if (result instanceof Error) {
-		res.status(404).send(result.message);
+ * if result is an error, handle the error
+ * else return success
+ */
+	try {
+		const id = req.params.id;
+		const result = await deleteById(id);
+		if (result instanceof Error) {
+			// const code = result.getCode();
+			// res.status(code).send(result.message);
+			return next(result, req, res);
+		}
+		else {
+			res.status(200).send("User deleted");
+		}
 	}
-	else {
-		res.status(200).send("User deleted");
+	catch (error) {
+		return next(error, req, res)
 	}
-
-
 }
 
 

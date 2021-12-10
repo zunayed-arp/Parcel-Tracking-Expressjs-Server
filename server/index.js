@@ -1,5 +1,6 @@
 import express from "express";
 import configure from "./controllers";
+import { handleErrors } from "./middlewares/handleErrors";
 import connectWithDb from "./mongo";
 
 const port = process.env.port || 3000;
@@ -10,6 +11,7 @@ app.use(express.json());
 connectWithDb();
 
 configure(app)
+app.use(handleErrors)
 
 app.listen(port, () => {
 	console.log('Listening to to port ', port)
