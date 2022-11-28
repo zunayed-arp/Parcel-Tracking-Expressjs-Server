@@ -12,8 +12,16 @@ app.get("/",(req,res)=>{
 app.post("/",(req,res)=>{
 
     const body = req.body;
-    res.send("Hi this from post data "+ JSON.stringify(body))
+    res.send("Hi this from post data "+body.message )
 })
+
+
+/**
+ * 1. up and running the express server
+ * 2. configure the express server
+ * 3. handle the routing of the server
+ * 
+ */
 
 
 app.listen(port,()=>{
