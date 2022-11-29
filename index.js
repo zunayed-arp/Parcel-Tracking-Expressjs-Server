@@ -10,7 +10,6 @@ app.get("/",(req,res)=>{
 });
 
 app.post("/",(req,res)=>{
-
     const body = req.body;
     res.send("Hi this from post data "+body.message )
 })
