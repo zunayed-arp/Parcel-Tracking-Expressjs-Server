@@ -2,10 +2,9 @@
   "name": "parcel_koi",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon -r esm index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +19,7 @@
   },
   "homepage": "https://github.com/zunayed-arp/parcel_koi#readme",
   "dependencies": {
+    "esm": "^3.2.25",
     "express": "^4.18.2",
     "mongodb": "^4.12.1",
     "mongoose": "^6.7.3",
