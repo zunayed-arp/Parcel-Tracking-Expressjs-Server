@@ -1,8 +1,14 @@
+
 import express from "express";
+
+import models from './models/index.js';
 
 const port = 3000;
 const app = express();
 app.use(express.json())
+
+
+const log = (msg)=>console.log(msg)
 
 
 app.get("/",(req,res)=>{
@@ -26,3 +32,5 @@ app.post("/",(req,res)=>{
 app.listen(port,()=>{
     console.log("Listening to port " + port);
 })
+
+log(models)
