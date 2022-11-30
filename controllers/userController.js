@@ -1,8 +1,8 @@
 import express from "express";
-
 import models from "../models";
 
-const app = express();
+
+const router = express.Router();
 
 const getHandler = (req, res) => {
   res.send("Hello World" + req.query.id);
@@ -25,6 +25,12 @@ const postHandler = (req, res) => {
     });
 };
 
-app.get("/", getHandler);
+router.get("/", getHandler);
 
-app.post("/", postHandler);
+router.post("/", postHandler);
+
+const configure = (app) => {
+  app.use("/users", router);
+};
+
+export default configure;
