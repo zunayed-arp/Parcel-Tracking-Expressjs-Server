@@ -1,39 +1,23 @@
 import express from "express";
-import models from "./models";
+import configure from "./controllers";
 import connectWithDb from "./mongo";
 
 const port = 3000;
 const app = express();
+
 app.use(express.json());
 
-const log = (msg) => console.log(msg);
+// const log = (msg) => console.log(msg);
 
 connectWithDb();
 
-// const getHandler = (req, res) => {
-//   res.send("Hello World" + req.query.id);
-// };
+configure(app);
 
-// const postHandler = (req, res) => {
-//   const body = req.body;
+app.listen(port, () => {
+  console.log("Listening to port " + port);
+});
 
-//   const user = new models.User({
-//     username: body.username,
-//     created_at: new Date(),
-//   });
-//   user
-//     .save()
-//     .then((savedUser) => {
-//       res.status(201).send("user saved id: " + savedUser._id);
-//     })
-//     .catch((error) => {
-//       res.status(500).send(error);
-//     });
-// };
-
-// app.get("/", getHandler);
-
-// app.post("/", postHandler);
+// log(models);
 
 /**
  * 1. up and running the express server
@@ -48,9 +32,3 @@ connectWithDb();
  *  userService=->service layer: process the object and send to data layer
  *  mongoose wrapper=-> data layer: process the data and get/set it to database
  */
-
-app.listen(port, () => {
-  console.log("Listening to port " + port);
-});
-
-log(models);
