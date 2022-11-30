@@ -8,15 +8,13 @@ app.use(express.json());
 
 const log = (msg) => console.log(msg);
 
-
-
 connectWithDb();
 
-app.get("/", (req, res) => {
+const getHandler = (req, res) => {
   res.send("Hello World" + req.query.id);
-});
+};
 
-app.post("/", (req, res) => {
+const postHandler = (req, res) => {
   const body = req.body;
 
   const user = new models.User({
@@ -31,7 +29,11 @@ app.post("/", (req, res) => {
     .catch((error) => {
       res.status(500).send(error);
     });
-});
+};
+
+app.get("/", getHandler);
+
+app.post("/", postHandler);
 
 /**
  * 1. up and running the express server
@@ -39,9 +41,10 @@ app.post("/", (req, res) => {
  * 3. handle the routing of the server
  * 
  * use directory import
- * use async awaiimport connectWithDb from './server/mongo';
-t function
- *
+ * use async await function
+ * 
+ * 3 layer architecture
+ *  ->controller layer: process the http requests
  */
 
 app.listen(port, () => {
