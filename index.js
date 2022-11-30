@@ -10,41 +10,43 @@ const log = (msg) => console.log(msg);
 
 connectWithDb();
 
-const getHandler = (req, res) => {
-  res.send("Hello World" + req.query.id);
-};
+// const getHandler = (req, res) => {
+//   res.send("Hello World" + req.query.id);
+// };
 
-const postHandler = (req, res) => {
-  const body = req.body;
+// const postHandler = (req, res) => {
+//   const body = req.body;
 
-  const user = new models.User({
-    username: body.username,
-    created_at: new Date(),
-  });
-  user
-    .save()
-    .then((savedUser) => {
-      res.status(201).send("user saved id: " + savedUser._id);
-    })
-    .catch((error) => {
-      res.status(500).send(error);
-    });
-};
+//   const user = new models.User({
+//     username: body.username,
+//     created_at: new Date(),
+//   });
+//   user
+//     .save()
+//     .then((savedUser) => {
+//       res.status(201).send("user saved id: " + savedUser._id);
+//     })
+//     .catch((error) => {
+//       res.status(500).send(error);
+//     });
+// };
 
-app.get("/", getHandler);
+// app.get("/", getHandler);
 
-app.post("/", postHandler);
+// app.post("/", postHandler);
 
 /**
  * 1. up and running the express server
  * 2. configure the express server
  * 3. handle the routing of the server
- * 
+ *
  * use directory import
  * use async await function
- * 
+ *
  * 3 layer architecture
- *  ->controller layer: process the http requests
+ *  userController=->controller layer: process the http requests
+ *  userService=->service layer: process the object and send to data layer
+ *  mongoose wrapper=-> data layer: process the data and get/set it to database
  */
 
 app.listen(port, () => {
