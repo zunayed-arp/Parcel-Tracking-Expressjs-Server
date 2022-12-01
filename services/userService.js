@@ -10,3 +10,12 @@ export const saveUser = async (user) => {
 
   return savedUser;
 };
+
+
+export const getAllUsers = async () =>{
+  const User =  models.User();
+  const users = await User.find();
+
+  return users;
+
+}
