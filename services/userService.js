@@ -13,7 +13,8 @@ export const saveUser = async (user) => {
 
 
 export const getAllUsers = async () =>{
-  const User =  models.User();
+  const User =  models.User;
+  console.log('user',User)
   const users = await User.find();
 
   return users;
