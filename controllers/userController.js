@@ -11,9 +11,10 @@ const getHandler = (req, res) => {
 
 const postHandler = async (req, res) => {
   const body = req.body;
-  const savedUser = await saveUser(body)
+  const user = await saveUser(body)
+  res.send(user._id);
 
-  
+   
 }; 
 
 router.get("/", getHandler);

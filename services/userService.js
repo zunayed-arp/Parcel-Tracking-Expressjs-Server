@@ -1,23 +1,12 @@
 import models from "../models";
 
-
-
-export const saveUser = (user) => {
+export const saveUser = async (user) => {
   const model = new models.User({
-    username: body.username,
+    username: user.username,
     created_at: new Date(),
   });
-  user
-    .save()
-    .then((savedUser) => {
-    //   res.status(201).send("user saved id: " + savedUser._id);
-    return savedUser;
-    })
-    .catch((error) => {
-    //   res.status(500).send(error);
-    throw error;
-    });
+
+  const savedUser = await model.save();
+
+  return savedUser;
 };
-
-
-
