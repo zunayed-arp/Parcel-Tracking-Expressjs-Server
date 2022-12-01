@@ -18,5 +18,30 @@ export const getAllUsers = async () =>{
   const users = await User.find();
 
   return users;
+};
 
+export const update = async (user) =>{
+
+  const id = user._id;
+  const User = models.User;
+  let model = await User.findById(id);
+
+  if(model){
+    model.username = user.username;
+    model.save();
+  };
+
+  return null;
+
+};
+
+
+export const deleteById = async (id) =>{
+  //remove->obsolote
+  //delete one
+  //delte many
+
+  const User = models.User;
+  const result = await User.deleteOne({_id:id});
+  return result;
 }
