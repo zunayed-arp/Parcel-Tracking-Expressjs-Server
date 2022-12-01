@@ -11,37 +11,33 @@ export const saveUser = async (user) => {
   return savedUser;
 };
 
-
-export const getAllUsers = async () =>{
-  const User =  models.User;
-  console.log('user',User)
+export const getAllUsers = async () => {
+  const User = models.User;
+  console.log("user", User);
   const users = await User.find();
 
   return users;
 };
 
-export const update = async (user) =>{
-
+export const update = async (user) => {
   const id = user._id;
   const User = models.User;
   let model = await User.findById(id);
 
-  if(model){
+  if (model) {
     model.username = user.username;
     model.save();
-  };
+    return model;
+  }
 
   return null;
-
 };
 
-
-export const deleteById = async (id) =>{
+export const deleteById = async (id) => {
   //remove->obsolote
   //delete one
   //delte many
-
   const User = models.User;
-  const result = await User.deleteOne({_id:id});
-  return result;
-}
+  const result = await User.deleteOne(id);
+  return result; 
+};
