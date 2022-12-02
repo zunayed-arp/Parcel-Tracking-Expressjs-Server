@@ -38,6 +38,6 @@ export const deleteById = async (id) => {
   //delete one
   //delte many
   const User = models.User;
-  const result = await User.deleteOne(id);
+  const result = await User.deleteOne({_id:id});
   return result; 
 };
