@@ -31,4 +31,7 @@ app.listen(port, () => {
  *  userController=->controller layer: process the http requests
  *  userService=->service layer: process the object and send to data layer
  *  mongoose wrapper=-> data layer: process the data and get/set it to database
+ * 
+ * query: localhost:3000/users?id=100
+ * params: localhost:3000/users/100
  */
