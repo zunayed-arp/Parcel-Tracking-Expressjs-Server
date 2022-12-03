@@ -37,6 +37,7 @@ router.post("/", postHandler);
 router.put("/",putHandler);
 
 router.delete("/",deleteHandler);
+//delete handler
 
 const configure = (app) => {
   app.use("/users", router);
