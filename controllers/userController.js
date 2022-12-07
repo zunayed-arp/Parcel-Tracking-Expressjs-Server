@@ -11,6 +11,7 @@ const getHandler = async (req, res) => {
 };
 
 const postHandler = async (req, res) => {
+  console.log(req.body)
   const body = req.body;
   const user = await saveUser(body)
   res.status(201).send(user._id);
@@ -19,9 +20,12 @@ const postHandler = async (req, res) => {
 const putHandler = async (req,res)=>{
   const body = req.body;
   const user = await update(body);
-  res.status(200).send(user._id)
+  res.status(200).send({"user":user.username,"id":user._id})
 }
+
+
 const deleteHandler = async (req,res)=>{
+  console.log(req.params.id)
   const id = req.params.id;
   if (!id){
     res.status(400).send('ID not provided')
@@ -36,8 +40,7 @@ router.post("/", postHandler);
 
 router.put("/",putHandler);
 
-router.delete("/",deleteHandler);
-//delete handler
+router.delete("/:id ",deleteHandler);
 
 const configure = (app) => {
   app.use("/users", router);

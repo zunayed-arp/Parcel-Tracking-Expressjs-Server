@@ -20,11 +20,16 @@ export const getAllUsers = async () => {
 };
 
 export const update = async (user) => {
+  console.log(user)
   const id = user._id;
   const User = models.User;
   let model = await User.findById(id);
+  console.log('model',model)
 
-  if (model) {
+  // model.username = user.username;
+  // model.save();
+
+  if(model) {
     model.username = user.username;
     model.save();
     return model;
@@ -33,11 +38,18 @@ export const update = async (user) => {
   return null;
 };
 
+
+
 export const deleteById = async (id) => {
   //remove->obsolote
   //delete one
   //delte many
   const User = models.User;
   const result = await User.deleteOne({_id:id});
-  return result; 
+  return result;
+  /**
+   *  if the user is not null,delete it
+   *  return user not found
+   *  
+   */ 
 };

@@ -32,6 +32,6 @@ app.listen(port, () => {
  *  userService=->service layer: process the object and send to data layer
  *  mongoose wrapper=-> data layer: process the data and get/set it to database
  * 
- * query: localhost:3000/users?id=100
- * params: localhost:3000/users/100
+ * query: localhost:3000/users?id=100(if parameter is dynamic,then query is preferable to use)
+ * params: localhost:3000/users/100(if its not dynamic params is the good enough to use)
  */
