@@ -25,13 +25,21 @@ const putHandler = async (req,res)=>{
 
 
 const deleteHandler = async (req,res)=>{
+
+  /**
+   * if result is an error, handle the error
+   * else return success message
+   */
   console.log(req.params.id)
   const id = req.params.id;
-  if (!id){
-    res.status(400).send('ID not provided')
+  const result = await deleteById(id);
+  if (result instanceof Error){
+    res.status(400).send(result.message)
   }
-  await deleteById(id);
-  res.status(200).send("User deleted")
+  else{
+    res.status(200).send("User deleted")
+  }
+  
 }
 
 router.get("/", getHandler);
@@ -40,7 +48,7 @@ router.post("/", postHandler);
 
 router.put("/",putHandler);
 
-router.delete("/:id ",deleteHandler);
+router.delete("/:id",deleteHandler);
 
 const configure = (app) => {
   app.use("/users", router);
