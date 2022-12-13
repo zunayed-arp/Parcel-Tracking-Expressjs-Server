@@ -1,5 +1,4 @@
-import express from "express";
-import models from "../models";
+import express from "express"; 
 import {saveUser,getAllUsers,update,deleteById} from "../services/userService"
 
 
