@@ -1,0 +1,14 @@
+import { GeneralError } from "../utils/error"
+
+export const handleErrors = async (err, req, res, next)=>{
+    if(err instanceof GeneralError){
+        const code = result.getCode();
+        return res.status(code).json({name:err.name, message: err.message})
+    }
+
+
+    //we don't know any known error if we come into this point!
+    return res.status(500).json({
+        name:'Internal server Error',message:err.message
+    });
+}

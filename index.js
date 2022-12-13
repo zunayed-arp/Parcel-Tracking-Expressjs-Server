@@ -1,5 +1,6 @@
 import express from "express";
 import configure from "./controllers";
+import { handleErrors } from "./middlewares/handleErrors";
 import connectWithDb from "./mongo";
 
 const port = 3000;
@@ -13,6 +14,9 @@ connectWithDb();
 
 configure(app);
 
+//middleware
+app.use(handleErrors());
+
 app.listen(port, () => {
   console.log("Listening to port " + port);
 });
@@ -25,7 +29,8 @@ app.listen(port, () => {
  * 3. handle the routing of the server
  *
  * use directory import
- * use async await function
+ * use async awaiimport { handleErrors } from './middlewares/handleErrors';
+t function
  *
  * 3 layer architecture
  *  userController=->controller layer: process the http requests
