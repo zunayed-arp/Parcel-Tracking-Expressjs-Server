@@ -33,7 +33,8 @@ const deleteHandler = async (req,res)=>{
   const id = req.params.id;
   const result = await deleteById(id);
   if (result instanceof Error){
-    res.status(400).send(result.message)
+    const code = result.getCode();
+    res.status(code).send(result.message)
   }
   else{
     res.status(200).send("User deleted")
