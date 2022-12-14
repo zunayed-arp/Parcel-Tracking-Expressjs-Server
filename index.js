@@ -15,7 +15,7 @@ connectWithDb();
 configure(app);
 
 //middleware
-app.use(handleErrors());
+app.use(handleErrors);
 
 app.listen(port, () => {
   console.log("Listening to port " + port);
