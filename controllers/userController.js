@@ -43,7 +43,7 @@ const deleteHandler = async (req, res, next) => {
    * if result is an error, handle the error
    * else return success message
    */
-  console.log(req.params.id);
+  // console.log(req.params.id);
   try {
     const id = req.params.id;
     const result = await deleteById(id);
