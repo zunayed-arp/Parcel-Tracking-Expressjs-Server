@@ -1,6 +1,14 @@
 import models from "../models";
 import { NotFound } from "../utils/error";
 
+export const getAllUsers = async () => {
+  const User = models.User;
+  console.log("user", User);
+  const users = await User.find();
+
+  return users;
+};
+
 export const saveUser = async (user) => {
   const model = new models.User({
     username: user.username,
@@ -10,14 +18,6 @@ export const saveUser = async (user) => {
   const savedUser = await model.save();
 
   return savedUser;
-};
-
-export const getAllUsers = async () => {
-  const User = models.User;
-  console.log("user", User);
-  const users = await User.find();
-
-  return users;
 };
 
 export const update = async (user) => {
@@ -40,8 +40,8 @@ export const deleteById = async (id) => {
   //delte many
   const User = models.User;
   let model = await User.findById(id);
-  if (model){
-    let result = await User.deleteOne({_id:id});
+  if (model) {
+    let result = await User.deleteOne({ _id: id });
     return result;
   }
   return new NotFound("User not found by id: " + id);
