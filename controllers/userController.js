@@ -6,6 +6,11 @@ import {
   deleteById,
 } from "../services/userService";
 
+import validators from "../models/view-models";
+
+
+import { handleValidations as handleValidation } from "../middlewares/handleValidations";
+
 const router = express.Router();
 
 const getHandler = async (req, res, next) => {
