@@ -66,7 +66,7 @@ const deleteHandler = async (req, res, next) => {
 
 router.get("/", getHandler);
 
-router.post("/", postHandler);
+router.post("/",handleValidation(validators.userSchemaValidate) , postHandler);
 
 router.put("/", putHandler);
 
