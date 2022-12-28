@@ -23,7 +23,7 @@ const getHandler = async (req, res, next) => {
 
 const postHandler = async (req, res, next) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const body = req.body;
     const user = await saveUser(body);
     res.status(201).send(user._id);

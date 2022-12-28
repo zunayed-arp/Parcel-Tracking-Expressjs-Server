@@ -11,12 +11,12 @@ export const getAllUsers = async () => {
 
 export const saveUser = async (user) => {
 
-  console.log("saveUser",user)
+  // console.log("saveUser",user)
   const model = new models.User(user);
-  console.log("model",model)
+  // console.log("model",model)s
   const savedUser = await model.save();
 
-  console.log('savedUser',savedUser)
+  // console.log('savedUser',savedUnser)
 
   return savedUser;
 };
