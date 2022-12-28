@@ -1,7 +1,6 @@
 import models from "../models";
 import { NotFound } from "../utils/errors";
 
-
 export const getAllUsers = async () => {
   const User = models.User;
   console.log("user", User);
@@ -11,9 +10,13 @@ export const getAllUsers = async () => {
 };
 
 export const saveUser = async (user) => {
-  const model = new models.User(user);
 
+  console.log("saveUser",user)
+  const model = new models.User(user);
+  console.log("model",model)
   const savedUser = await model.save();
+
+  console.log('savedUser',savedUser)
 
   return savedUser;
 };
