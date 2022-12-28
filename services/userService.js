@@ -11,10 +11,7 @@ export const getAllUsers = async () => {
 };
 
 export const saveUser = async (user) => {
-  const model = new models.User({
-    username: user.username,
-    created_at: new Date(),
-  });
+  const model = new models.User(user);
 
   const savedUser = await model.save();
 

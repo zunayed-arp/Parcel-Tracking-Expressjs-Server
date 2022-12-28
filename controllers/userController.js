@@ -8,8 +8,7 @@ import {
 
 import validators from "../models/view-models";
 
-
-import { handleValidations as handleValidation } from "../middlewares/handleValidations";
+import { handleValidation } from "../middlewares/handleValidations";
 
 const router = express.Router();
 
@@ -66,7 +65,7 @@ const deleteHandler = async (req, res, next) => {
 
 router.get("/", getHandler);
 
-router.post("/",handleValidation(validators.userSchemaValidate) , postHandler);
+router.post("/", handleValidation(validators.userSchemaValidate), postHandler);
 
 router.put("/", putHandler);
 

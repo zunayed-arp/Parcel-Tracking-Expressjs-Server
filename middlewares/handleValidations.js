@@ -1,7 +1,6 @@
+import { BadRequest } from "../utils/errors";
 
-
-
-export default handleValidatioin = (validate) => {
+export const handleValidation = (validate) => {
   return (req, res, next) => {
     const result = validate(req.body);
     const isValid = result.error === null;
@@ -11,6 +10,6 @@ export default handleValidatioin = (validate) => {
     const { details } = result.error;
     const messages = details.map((e) => e.message);
     const msg = messages.join(",");
-    throw new Error(msg);
+    throw new BadRequest(msg);
   };
 };
