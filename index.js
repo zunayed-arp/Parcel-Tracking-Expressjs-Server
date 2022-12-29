@@ -1,6 +1,6 @@
 import express from "express";
 import configure from "./controllers";
-import connectWithDb from "./mongo";
+import {connectWithDb,uri} from "./mongo";
 import { handleErrors } from "./middlewares/handleErrors";
 import winston from "winston";
 import expressWinston from "express-winston";
@@ -52,6 +52,11 @@ const fileErrorTransport = new (winston.transports.DailyRotateFile)(
   }
 );
 
+const mongoErrorTransport = new winston.transports.MongoDB({
+  db:uri,
+  metaKey:'meta',
+})
+
 const infoLogger = expressWinston.logger({
   transports: [new winston.transports.Console(),fileInfoTransport],
   format: winston.format.combine(
@@ -66,7 +71,8 @@ const infoLogger = expressWinston.logger({
 const errorLogger = expressWinston.errorLogger({
   transports: [
     new winston.transports.Console(),
-    fileErrorTransport
+    fileErrorTransport,
+    mongoErrorTransport
   ]
 })
 
