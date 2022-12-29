@@ -6,7 +6,7 @@ import winston from "winston";
 import expressWinston from "express-winston";
 import winstonFile from "winston-daily-rotate-file";
 import winstonMongo from "winston-mongodb";
-import { ElasticsearchTransport } from "winston-elasticsearch";
+import  ElasticsearchTransport from "winston-elasticsearch";
 
 const port = 3000;
 const app = express();
@@ -29,22 +29,23 @@ app.use(processRequest);
 
 connectWithDb();
 
-const getMessage = (req,res)=>{
+const getMessage = (req, res) => {
   let obj = {
-    correlationId: req.headers['x-correlation-id'],
-    requestBody: req.body
+    correlationId: req.headers["x-correlation-id"],
+    requestBody: req.body,
   };
   return JSON.stringify(obj);
-}
+};
 
 const infoLogger = expressWinston.logger({
-  transports: [
-    new winston.transports.Console()
-  ],
-  format: winston.format.combine(winston.format.colorize(),winston.format.json()),
+  transports: [new winston.transports.Console()],
+  format: winston.format.combine(
+    winston.format.colorize(),
+    winston.format.json()
+  ),
   meta: true,
-  msg:"this is a log {{req.method}}"
-})
+  msg: "this is a log {{req.method}}",
+});
 
 app.use(infoLogger);
 
@@ -66,7 +67,8 @@ app.listen(port, () => {
  *
  * use directory import
  * use async awaiimport { handleErrors } from './middlewares/handleErrors';
-t function
+t functionimport { ElasticsearchTransport } from 'winston-elasticsearch';
+
  *
  * 3 layer architecture
  *  userController=->controller layer: process the http requests
