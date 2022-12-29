@@ -37,14 +37,22 @@ const getMessage = (req, res) => {
   return JSON.stringify(obj);
 };
 
+const fileInfoTransport = new (winston.transports.DailyRotateFile)(
+  {
+    filename: 'log-info-%DATE%.log',
+    datePattern:'yyyy-MM-DD-HH',
+
+  }
+);
+
 const infoLogger = expressWinston.logger({
-  transports: [new winston.transports.Console()],
+  transports: [new winston.transports.Console(),fileInfoTransport],
   format: winston.format.combine(
     winston.format.colorize(),
     winston.format.json()
   ),
-  meta: true,
-  msg: "this is a log {{req.method}}",
+  meta: false,
+  msg: getMessage
 });
 
 app.use(infoLogger);
