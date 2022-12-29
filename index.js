@@ -1,12 +1,14 @@
 import express from "express";
 import configure from "./controllers";
-import {connectWithDb,uri} from "./mongo";
+import { connectWithDb, uri } from "./mongo";
 import { handleErrors } from "./middlewares/handleErrors";
 import winston from "winston";
 import expressWinston from "express-winston";
 import winstonFile from "winston-daily-rotate-file";
 import winstonMongo from "winston-mongodb";
-import  ElasticsearchTransport from "winston-elasticsearch";
+import ElasticsearchTransport from "winston-elasticsearch";
+// import winstonElasticsearch from "winston-elasticsearch";
+// import {ElasticsearchTransport} from 'winston-elasticsearch';
 
 const port = 3000;
 const app = express();
@@ -37,44 +39,57 @@ const getMessage = (req, res) => {
   return JSON.stringify(obj);
 };
 
-const fileInfoTransport = new (winston.transports.DailyRotateFile)(
-  {
-    filename: 'log-info-%DATE%.log',
-    datePattern:'yyyy-MM-DD-HH',
-
-  }
-);
-const fileErrorTransport = new (winston.transports.DailyRotateFile)(
-  {
-    filename: 'log-error-%DATE%.log',
-    datePattern:'yyyy-MM-DD-HH',
-
-  }
-);
+const fileInfoTransport = new winston.transports.DailyRotateFile({
+  filename: "log-info-%DATE%.log",
+  datePattern: "yyyy-MM-DD-HH",
+});
+const fileErrorTransport = new winston.transports.DailyRotateFile({
+  filename: "log-error-%DATE%.log",
+  datePattern: "yyyy-MM-DD-HH",
+});
 
 const mongoErrorTransport = new winston.transports.MongoDB({
-  db:uri,
-  metaKey:'meta',
-})
+  db: uri,
+  metaKey: "meta",
+});
+
+//elasticSearch
+const ElasticsearchOptions = {
+  level: "info",
+  clientOpts: { node: "http://localhost:9200" },
+  indexPrefix: "log-parcelkoi",
+};
+
+const esTransport = new ElasticsearchTransport(ElasticsearchOptions);
 
 const infoLogger = expressWinston.logger({
-  transports: [new winston.transports.Console(),fileInfoTransport],
+  transports: [
+    // new winston.transports.Console(),
+    fileInfoTransport,
+    esTransport,
+  ],
+  format: winston.format.combine(
+    winston.format.colorize(),
+    winston.format.json()
+  ),
+  meta: false,
+  msg: getMessage,
+});
+
+const errorLogger = expressWinston.errorLogger({
+  transports: [
+    // new winston.transports.Console(),
+    fileErrorTransport,
+    mongoErrorTransport,
+    esTransport,
+  ],
   format: winston.format.combine(
     winston.format.colorize(),
     winston.format.json()
   ),
   meta: true,
-  msg: getMessage
+  msg: '{"correlationId":"{{req.headers["x-correlation-id"]}}", "error":"{{err.message}}" }',
 });
-
-
-const errorLogger = expressWinston.errorLogger({
-  transports: [
-    new winston.transports.Console(),
-    fileErrorTransport,
-    mongoErrorTransport
-  ]
-})
 
 app.use(infoLogger);
 
