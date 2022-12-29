@@ -44,6 +44,13 @@ const fileInfoTransport = new (winston.transports.DailyRotateFile)(
 
   }
 );
+const fileErrorTransport = new (winston.transports.DailyRotateFile)(
+  {
+    filename: 'log-error-%DATE%.log',
+    datePattern:'yyyy-MM-DD-HH',
+
+  }
+);
 
 const infoLogger = expressWinston.logger({
   transports: [new winston.transports.Console(),fileInfoTransport],
@@ -51,13 +58,23 @@ const infoLogger = expressWinston.logger({
     winston.format.colorize(),
     winston.format.json()
   ),
-  meta: false,
+  meta: true,
   msg: getMessage
 });
+
+
+const errorLogger = expressWinston.errorLogger({
+  transports: [
+    new winston.transports.Console(),
+    fileErrorTransport
+  ]
+})
 
 app.use(infoLogger);
 
 configure(app);
+
+app.use(errorLogger);
 
 //middleware
 app.use(handleErrors);
