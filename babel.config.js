@@ -1,5 +1,5 @@
 module.exports = {
-    preset:[
+    presets:[
         [
             '@babel/preset-env',{
                 targets:{
@@ -9,3 +9,8 @@ module.exports = {
         ]
     ]
 }
+
+
+
+
+
