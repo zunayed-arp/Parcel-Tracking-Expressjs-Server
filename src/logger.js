@@ -3,6 +3,7 @@ import expressWinston from "express-winston";
 import winstonFile from "winston-daily-rotate-file";
 import winstonMongo from "winston-mongodb";
 import ElasticsearchTransport from "winston-elasticsearch";
+// import { uri } from "./mongo";
 
 const getMessage = (req, res) => {
   let obj = {
@@ -21,10 +22,11 @@ const fileErrorTransport = new winston.transports.DailyRotateFile({
   datePattern: "yyyy-MM-DD-HH",
 });
 
-const mongoErrorTransport = (uri) => new winston.transports.MongoDB({
-  db: uri,
-  metaKey: "meta",
-});
+const mongoErrorTransport = (uri) =>
+  new winston.transports.MongoDB({
+    db: uri,
+    metaKey: "meta",
+  });
 
 //elasticSearch
 const ElasticsearchOptions = {
@@ -35,31 +37,33 @@ const ElasticsearchOptions = {
 
 const esTransport = new ElasticsearchTransport(ElasticsearchOptions);
 
-export const infoLogger = () => expressWinston.logger({
-  transports: [
-    // new winston.transports.Console(),
-    fileInfoTransport,
-    esTransport,
-  ],
-  format: winston.format.combine(
-    winston.format.colorize(),
-    winston.format.json()
-  ),
-  meta: false,
-  msg: getMessage,
-});
+export const infoLogger = () =>
+  expressWinston.logger({
+    transports: [
+      new winston.transports.Console(),
+      fileInfoTransport,
+      esTransport,
+    ],
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.json()
+    ),
+    meta: false,
+    msg: getMessage,
+  });
 
-export const errorLogger = (uri) => expressWinston.errorLogger({
-  transports: [
-    // new winston.transports.Console(),
-    fileErrorTransport,
-    mongoErrorTransport(uri),
-    esTransport,
-  ],
-  format: winston.format.combine(
-    winston.format.colorize(),
-    winston.format.json()
-  ),
-  meta: true,
-  msg: '{"correlationId":"{{req.headers["x-correlation-id"]}}", "error":"{{err.message}}" }',
-});
+export const errorLogger = (uri) =>
+  expressWinston.errorLogger({
+    transports: [
+      new winston.transports.Console(),
+      fileErrorTransport,
+      mongoErrorTransport(uri),
+      esTransport,
+    ],
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.json()
+    ),
+    meta: true,
+    msg: '{"correlationId":"{{req.headers["x-correlation-id"]}}", "error":"{{err.message}}" }',
+  });

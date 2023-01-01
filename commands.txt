@@ -1,1 +1,7 @@
 nodemon -r esm ./index.js 
+sudo systemctl start kibana.service
+
+sudo systemctl start kibana.service
+service elasticsearch start
+
+jest --force-exit

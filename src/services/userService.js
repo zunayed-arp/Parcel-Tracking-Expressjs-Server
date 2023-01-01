@@ -1,6 +1,7 @@
 import models from "../models";
 import { NotFound } from "../utils/errors";
 
+
 export const getAllUsers = async () => {
   const User = models.User;
   console.log("user", User);
