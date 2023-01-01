@@ -26,6 +26,7 @@ describe("user controller test suite", () => {
     console.log("get all users test");
     let response = await request(app).get('/users');
     expect(response).not.toBeNull();
+    console.log(response)
     
   });
 });
