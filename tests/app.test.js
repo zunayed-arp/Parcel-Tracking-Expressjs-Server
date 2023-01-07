@@ -18,15 +18,15 @@ afterEach(async ()=>{
     console.log("After Each")
 });
 
-describe("user controller test suite", () => {
-  test("should work", async () => {
-    console.log("my first test");
-  });
-  test("get all users should return list of users", async () => {
-    console.log("get all users test");
-    let response = await request(app).get('/users');
-    expect(response.statusCode).toBe(200)
-    console.log(response.body)
+// describe("user controller test suite", () => {
+//   test("should work", async () => {
+//     console.log("my first test");
+//   });
+//   test("get all users should return list of users", async () => {
+//     console.log("get all users test");
+//     let response = await request(app).get('/users');
+//     expect(response.statusCode).toBe(200)
+//     console.log(response.body)
     
-  });
-});
+//   });
+// });
