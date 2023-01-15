@@ -10,8 +10,8 @@ import ElasticsearchTransport from "winston-elasticsearch";
 // import winstonElasticsearch from "winston-elasticsearch";
 // import {ElasticsearchTransport} from 'winston-elasticsearch';
 
-// const port = 3000;
-// const app = express();
+const port = 3000;
+const app = express();
 
 app.use(express.json());
 
