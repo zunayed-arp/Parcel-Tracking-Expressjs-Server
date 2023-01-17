@@ -132,7 +132,7 @@ module.exports = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: ["<rootDir>/tests/setup.js,"],
+  // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
@@ -169,7 +169,7 @@ module.exports = {
   // This option allows the use of a custom results processor
   // testResultsProcessor: undefined,
 
-  // This option allows use of a custom test runners
+  // This option allows use of a custom test runner
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
