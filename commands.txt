@@ -5,3 +5,6 @@ sudo systemctl start kibana.service
 service elasticsearch start
 
 jest --force-exit
+
+
+jest --runInBand --force-exit

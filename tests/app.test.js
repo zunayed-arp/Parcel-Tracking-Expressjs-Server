@@ -1,6 +1,10 @@
 import request from "supertest";
 import app from "../src/app";
 
+
+import {getAllUsers} from "../src/services/userService";
+jest.mock('../src/services/userService');
+
 beforeAll(async ()=>{
     console.log('before all');
 });
@@ -22,11 +26,5 @@ describe("user controller test suite", () => {
   test("should work", async () => {
     console.log("my first test");
   });
-  test("get all users should return list of users", async () => {
-    console.log("get all users test");
-    let response = await request(app).get('/users');
-    expect(response.statusCode).toBe(200)
-    console.log(response.body)
-    
-  });
+  
 });

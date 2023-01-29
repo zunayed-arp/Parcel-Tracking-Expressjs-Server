@@ -1,0 +1,35 @@
+api response status should return 200
+
+get:
+	body - array of users
+
+post:
+status code should return 201
+response body should return saved id
+
+
+status should be 400 when username not sent
+status should be 400 when username less than 3 chars
+status should be 400 when username greater than 30 chars
+
+model should have createdAt property when it is saved properly 
+
+
+ 
+put:
+status code should return 200
+response body should return updated id
+
+
+delete:
+status code should return 200
+response body should return string message
+status code should retun 400 when id param is not specified 
+
+
+ 
+
+
+
+
+ 
