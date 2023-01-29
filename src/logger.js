@@ -13,14 +13,14 @@ const getMessage = (req, res) => {
   return JSON.stringify(obj);
 };
 
-const fileInfoTransport = new winston.transports.DailyRotateFile({
-  filename: "log-info-%DATE%.log",
-  datePattern: "yyyy-MM-DD-HH",
-});
-const fileErrorTransport = new winston.transports.DailyRotateFile({
-  filename: "log-error-%DATE%.log",
-  datePattern: "yyyy-MM-DD-HH",
-});
+// const fileInfoTransport = new winston.transports.DailyRotateFile({
+//   filename: "log-info-%DATE%.log",
+//   datePattern: "yyyy-MM-DD-HH",
+// });
+// const fileErrorTransport = new winston.transports.DailyRotateFile({
+//   filename: "log-error-%DATE%.log",
+//   datePattern: "yyyy-MM-DD-HH",
+// });
 
 const mongoErrorTransport = (uri) =>
   new winston.transports.MongoDB({
@@ -41,7 +41,10 @@ export const infoLogger = () =>
   expressWinston.logger({
     transports: [
       new winston.transports.Console(),
-      fileInfoTransport,
+      new winston.transports.DailyRotateFile({
+        filename: "log-info-%DATE%.log",
+        datePattern: "yyyy-MM-DD-HH",
+      }),
       esTransport,
     ],
     format: winston.format.combine(
@@ -56,7 +59,10 @@ export const errorLogger = (uri) =>
   expressWinston.errorLogger({
     transports: [
       new winston.transports.Console(),
-      fileErrorTransport,
+      new winston.transports.DailyRotateFile({
+        filename: "log-error-%DATE%.log",
+        datePattern: "yyyy-MM-DD-HH",
+      }),
       mongoErrorTransport(uri),
       esTransport,
     ],

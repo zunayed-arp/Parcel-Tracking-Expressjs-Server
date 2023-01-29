@@ -5,10 +5,11 @@ import { infoLogger, errorLogger } from "./logger";
 import { handleError, handleRequest } from "./middlewares/index";
 import dotenv from "dotenv";
 
-dotenv.config()
-
+dotenv.config();
 
 const app = express();
+
+console.log(process.env.ENVIRONMENT);
 
 app.use(express.json());
 
@@ -18,17 +19,15 @@ connectWithDb();
 
 if (process.env.ENVIRONMENT != "TEST") {
   app.use(infoLogger);
-};
+}
 
-console.log(process.env.ENVIRONMENT)
+console.log(process.env.ENVIRONMENT);
 
 configure(app);
 
-if(process.env.ENVIRONMENT !="TEST"){
-
-    app.use(errorLogger(uri));
-};
-
+if (process.env.ENVIRONMENT != "TEST") {
+  app.use(errorLogger(uri));
+}
 
 app.use(handleError);
 
