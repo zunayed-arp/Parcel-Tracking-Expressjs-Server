@@ -1,4 +1,5 @@
 import models from "../../models";
+import { NotFound } from "../../utils/errors";
 
 let users = [
   {
@@ -22,4 +23,11 @@ export const saveUser = async (user) => {
 export const getUserById = async (id) =>{
   let model = users.find(x =>x.id == id)
   return model;
+};
+
+
+export const update = async (user) => {
+ users[0].username = user.username;
+ return users[0];
+
 };

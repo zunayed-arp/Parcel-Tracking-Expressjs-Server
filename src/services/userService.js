@@ -33,7 +33,7 @@ export const update = async (user) => {
     return model;
   }
 
-  return null;
+  throw new NotFound('User not found by the id: ' + id);;
 };
 
 export const deleteById = async (id) => {
