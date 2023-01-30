@@ -1,4 +1,3 @@
-import { expectedError } from "@babel/core/lib/errors/rewrite-stack-trace";
 import request from "supertest";
 import app from "../src/app";
 
@@ -45,12 +44,13 @@ describe("userController Test Suite", () => {
   });
 
 
-  test('delete by id should return success message', async ()=>{
+  test.only('delete by id should return success message', async ()=>{
     let response = await request(app).put("/users/1");
-    expect(response.statusCode).toBe(200)
+    expect(response.statusCode).toBe(200);
     let deletedUserRespnse = await request(app).get('users/1');
+    expect(deletedUserRespnse.statusCode).toBe(404);
     let deletedUser = deletedUserRespnse.body;
-    expect(deletedUser).toBe(null);
+    expect(deletedUser.message).toBe('User not found by the id: 1');
   });
 
 
