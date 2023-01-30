@@ -2,7 +2,7 @@ import models from "../../models";
 
 let users = [
   {
-    _id: "1",
+    id: "1",
     username: "test001",
   },
 ];
