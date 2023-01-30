@@ -48,3 +48,10 @@ export const deleteById = async (id) => {
   }
   return new NotFound("User not found by id: " + id);
 };
+
+
+export const getUserById = async (id) =>{
+  const User = models.User;
+  let model = await User.findById(id);
+  return model;
+};
