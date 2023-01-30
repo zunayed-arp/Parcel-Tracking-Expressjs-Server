@@ -20,11 +20,12 @@ describe('userController Test Suite', ()=>{
         console.log('body',body)
         expect(body.length).toBe(24);
         // 63d79bf6f8f543f51bba5655
-        let savedUserResponse = await request(app).get('/users/' + body)
+        let savedUserResponse = await request(app).get('/users/'+body)
+        console.log('saved user response',savedUserResponse)
         let savedUser = savedUserResponse.body; 
+        // console.log('saved user',savedUser)
         expect(savedUser.createdAt).not.toBe(null);
-        // expect(savedUser.username).toBe(user.username)
-
+        expect(savedUser.username).toBe(user.username)
         
     });
 

@@ -4,6 +4,7 @@ import {
   getAllUsers,
   update,
   deleteById,
+  getUserById,
 } from "../services/userService";
 
 import validators from "../models/view-models";

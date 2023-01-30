@@ -20,6 +20,6 @@ export const saveUser = async (user) => {
 
 
 export const getUserById = async (id) =>{
-  let model = await users.find(x =>x._id == id)
+  let model = users.find(x =>x.id == id)
   return model;
 };
