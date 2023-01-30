@@ -35,7 +35,7 @@ describe("userController Test Suite", () => {
     expect(user.id).toBe("1");
   });
 
-  test.only("put should update an existing user", async () => {
+  test("put should update an existing user", async () => {
     let user = { id: "1", username: "test003" };
     let response = await request(app).put("/users").send(user);
     expect(response.statusCode).toBe(200);
@@ -44,5 +44,14 @@ describe("userController Test Suite", () => {
     expect(updatedUser.username).toBe(user.username);
   });
 
-  
+
+  test('delete by id should return success message', async ()=>{
+    let response = await request(app).put("/users/1");
+    expect(response.statusCode).toBe(200)
+    let deletedUserRespnse = await request(app).get('users/1');
+    let deletedUser = deletedUserRespnse.body;
+    expect(deletedUser).toBe(null);
+  });
+
+
 });
