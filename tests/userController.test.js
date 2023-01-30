@@ -10,11 +10,12 @@ describe('userController Test Suite', ()=>{
         expect(response.statusCode).toBe(200);
         let users = response.body;
         expect(users.length).toBeGreaterThan(0);
-        expect(users[0]._id).toBe('1');
+        expect(users[0].id).toBe('1');
     });
     test('post should return saved id',async ()=>{
         let user = {username: 'test002'};
         let response = await request(app).post('/users').send(user);
+        
         expect(response.statusCode).toBe(201);
         let body = response.body;
         console.log('body',body)
@@ -28,7 +29,7 @@ describe('userController Test Suite', ()=>{
         expect(savedUser.username).toBe(user.username);
     });
     
-    test.only('get by id should return an user',async ()=>{
+    test('get by id should return an user',async ()=>{
         let savedUserResponse = await request(app).get('/users/1');
         let user = savedUserResponse.body;
         expect(user.id).toBe("1")
