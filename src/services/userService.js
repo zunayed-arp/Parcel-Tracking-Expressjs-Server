@@ -17,8 +17,6 @@ export const saveUser = async (user) => {
   // console.log("model",model)s
   const savedUser = await model.save();
 
-  // console.log('savedUser',savedUnser)
-
   return savedUser;
 };
 

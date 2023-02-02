@@ -43,15 +43,13 @@ describe("userController Test Suite", () => {
     expect(updatedUser.username).toBe(user.username);
   });
 
-
-  test('delete by id should return success message', async ()=>{
+  test.only("delete by id should return success message", async () => {
     let response = await request(app).delete("/users/1");
     expect(response.statusCode).toBe(200);
-    let deletedUserRespnse = await request(app).get('/users/1');
-    expect(deletedUserRespnse.statusCode).toBe(404);
-    let deletedUser = deletedUserRespnse.body;
-    expect(deletedUser.message).toBe('User not found by the id: 1');
+    let deletedUserResponse = await request(app).get("/users/1");
+    expect(deletedUserResponse.statusCode).toBe(404);
+    let deletedUser = deletedUserResponse.body;
+    // console.log('deleted response',deletedUser.message)
+    expect(deletedUser.message).toBe("User not found by the id: 1");
   });
-
-
 });
