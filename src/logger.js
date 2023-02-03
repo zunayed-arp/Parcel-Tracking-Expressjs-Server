@@ -40,7 +40,7 @@ const esTransport = new ElasticsearchTransport(ElasticsearchOptions);
 export const infoLogger = () =>
   expressWinston.logger({
     transports: [
-      new winston.transports.Console(),
+      // new winston.transports.Console(),
       new winston.transports.DailyRotateFile({
         filename: "log-info-%DATE%.log",
         datePattern: "yyyy-MM-DD-HH",
@@ -58,7 +58,7 @@ export const infoLogger = () =>
 export const errorLogger = (uri) =>
   expressWinston.errorLogger({
     transports: [
-      new winston.transports.Console(),
+      // new winston.transports.Console(),
       new winston.transports.DailyRotateFile({
         filename: "log-error-%DATE%.log",
         datePattern: "yyyy-MM-DD-HH",
