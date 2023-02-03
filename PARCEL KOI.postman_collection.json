@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "a9ccf993-ccfb-4427-84c0-f974b70101c1",
+		"name": "PARCEL KOI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-correlation-id",
+						"value": "{{$guid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n    {\n        \"id\": \"63ac7410156653f0feba1baa\",\n        \"username\": \"u001--upadted-newew-edited\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "All Users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-correlation-id",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" :\"u006---4rtretr\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "x-correlation-id",
+							"value": "47bfea0f-1876-4d1f-9226-d317dcaa2909"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "639"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27f-8FssBWRagx97OTrAbr1LloGM1ac\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Feb 2023 16:48:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"63ac7410156653f0feba1baa\",\n        \"username\": \"u001--upadted\"\n    },\n    {\n        \"id\": \"63ac761a156653f0feba1bb0\",\n        \"username\": \"u003\"\n    },\n    {\n        \"id\": \"63ad4f6d5a4393e8ede90024\",\n        \"username\": \"w76r86t8yo78upptuuyghjfghj\"\n    },\n    {\n        \"id\": \"63ad5274a9d1b1eebefd4ea5\",\n        \"username\": \"u004\"\n    },\n    {\n        \"id\": \"63ad6a22c57be0af5b3ec5fd\",\n        \"username\": \"u005\"\n    },\n    {\n        \"id\": \"63ad98bc0b728392d86c45c6\",\n        \"username\": \"u006\"\n    },\n    {\n        \"id\": \"63dd105e19bb5c877717db63\",\n        \"username\": \"u007\"\n    },\n    {\n        \"id\": \"63dd2c7ccb178c5c5b61be67\",\n        \"username\": \"u000020\",\n        \"createdAt\": \"2023-10-09T18:00:00.000Z\"\n    },\n    {\n        \"id\": \"63dd2cadaad5da7f6c6da5a9\",\n        \"username\": \"u000021\"\n    },\n    {\n        \"id\": \"63dd2d3662def13291e6a2e1\",\n        \"username\": \"u000022\",\n        \"createdAt\": \"2023-02-03T15:50:14.745Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "CREATE USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"u000022\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CREATE USER",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"u000022\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "x-correlation-id",
+							"value": "1675439414745"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a-m889WjLWgFetpw2HvSPwNprZ3vc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Feb 2023 15:50:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "\"63dd2d3662def13291e6a2e1\""
+				}
+			]
+		},
+		{
+			"name": "User Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/63ac7410156653f0feba1baa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"63ac7410156653f0feba1baa"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "User Details",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/63ac7410156653f0feba1baa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"63ac7410156653f0feba1baa"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "x-correlation-id",
+							"value": "1675443006260"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "60"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3c-IFolYnjHFlpGWIWLpn4F2s9dCm8\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Feb 2023 16:50:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"63ac7410156653f0feba1baa\",\n    \"username\": \"u001--upadted\"\n}"
+				}
+			]
+		},
+		{
+			"name": "EDIT USER",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-correlation-id",
+						"value": "{{$guid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"username\": \"u000022-updated\"     \n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/63dd2d3662def13291e6a2e1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"63dd2d3662def13291e6a2e1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "EDIT USER",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-correlation-id",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n    {\n        \"id\": \"63ac7410156653f0feba1baa\",\n        \"username\": \"u001--upadted-newew-edited\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "x-correlation-id",
+							"value": "4845c8f0-1636-4faf-a154-bffdefc4eb36"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a-pyGS2l3Mz5uMOuU7DEEkxcGTG1g\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Feb 2023 20:50:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "\"63ac7410156653f0feba1baa\""
+				}
+			]
+		},
+		{
+			"name": "USER DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/63dd2d3662def13291e6a2e1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"63dd2d3662def13291e6a2e1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DELETE USER",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/63dd2d3662def13291e6a2e1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"63dd2d3662def13291e6a2e1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "x-correlation-id",
+							"value": "1675457561917"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "12"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c-xxNNZ5X7WQj0DW7feQn4lhVK2VM\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Feb 2023 20:52:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "User deleted"
+				}
+			]
+		}
+	]
+}

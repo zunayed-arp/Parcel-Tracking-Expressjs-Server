@@ -1,20 +1,20 @@
 import models from "../models/data-models";
-import { UserViewModel } from "../models/view-models/user-view-model";
+import {UserViewModel}  from "../models/view-models/user-view-model";
 import { NotFound } from "../utils/errors";
 
 export const getAllUsers = async () => {
   const User = models.User;
-  console.log("user", User);
   const users = await User.find();
-  let viewmodels = users.map((user) => new UserViewModel(user));
-  return viewmodels;
+  let viewModels = users.map((user) => new UserViewModel(user));
+  return viewModels;
 };
 
 export const saveUser = async (user) => {
   const model = new models.User(user);
   const savedUser = await model.save();
 
-  return savedUser._id;
+  // return savedUser._id;
+  return savedUser;
 };
 
 export const update = async (user) => {
