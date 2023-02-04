@@ -5,7 +5,6 @@ import { errorLogger, infoLogger } from "./logger";
 const port = 3000;
 
 app.listen(port, () => {
-
   connectWithDb();
 
   if (process.env.ENVIRONMENT != "TEST") {

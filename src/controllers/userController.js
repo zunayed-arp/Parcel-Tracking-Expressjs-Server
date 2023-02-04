@@ -6,10 +6,9 @@ import {
   deleteById,
   getUserById,
 } from "../services/userService";
-import validators from "../models/view-models";
+import validators from "../models/request-models";
 import { handleValidation } from "../middlewares";
-import {NotFound} from '../utils/errors';
-
+import { NotFound } from "../utils/errors";
 
 const router = express.Router();
 
@@ -29,7 +28,7 @@ const getByIdHandler = async (req, res, next) => {
     if (user) {
       res.status(200).send(user);
     } else {
-      throw new NotFound('User not found by the id: ' + id);
+      throw new NotFound("User not found by the id: " + id);
     }
   } catch (error) {
     return next(error, req, res);
@@ -38,10 +37,9 @@ const getByIdHandler = async (req, res, next) => {
 
 const postHandler = async (req, res, next) => {
   try {
-    // console.log(req.body);
     const body = req.body;
-    const user = await saveUser(body);
-    res.status(201).send(user._id);
+    const id = await saveUser(body);
+    res.status(201).send(id);
   } catch (error) {
     return next(error, req, res);
   }
@@ -50,8 +48,8 @@ const postHandler = async (req, res, next) => {
 const putHandler = async (req, res, next) => {
   try {
     const body = req.body;
-    const user = await update(body);
-    res.status(200).send({ user: user.username, id: user._id });
+    const id = await update(body);
+    res.status(200).send(id);
   } catch (error) {
     return next(error, req, res);
   }
@@ -67,8 +65,6 @@ const deleteHandler = async (req, res, next) => {
     const id = req.params.id;
     const result = await deleteById(id);
     if (result instanceof Error) {
-      // const code = result.getCode();
-      // res.status(code).send(result.message);
       return next(result, req, res);
     } else {
       res.status(200).send("User deleted");
@@ -87,8 +83,4 @@ router.put("/", putHandler);
 
 router.delete("/:id", deleteHandler);
 
-const configure = (app) => {
-  app.use("/users", router);
-};
-
-export default configure;
+export default router;
