@@ -28,10 +28,13 @@ const mongoErrorTransport = (uri) =>
     metaKey: "meta",
   });
 
+const HOST = process.env.ELASTICSEARCH_HOST || "localhost";
+console.log('HOST',HOST)
+
 //elasticSearch
 const ElasticsearchOptions = {
   level: "info",
-  clientOpts: { node: "http://localhost:9200" },
+  clientOpts: { node: `http://${HOST}:9200` },
   indexPrefix: "log-parcelkoi",
 };
 
@@ -41,10 +44,10 @@ export const infoLogger = () =>
   expressWinston.logger({
     transports: [
       // new winston.transports.Console(),
-      new winston.transports.DailyRotateFile({
-        filename: "log-info-%DATE%.log",
-        datePattern: "yyyy-MM-DD-HH",
-      }),
+      // new winston.transports.DailyRotateFile({
+      //   filename: "log-info-%DATE%.log",
+      //   datePattern: "yyyy-MM-DD-HH",
+      // }),
       esTransport,
     ],
     format: winston.format.combine(
@@ -59,10 +62,10 @@ export const errorLogger = (uri) =>
   expressWinston.errorLogger({
     transports: [
       // new winston.transports.Console(),
-      new winston.transports.DailyRotateFile({
-        filename: "log-error-%DATE%.log",
-        datePattern: "yyyy-MM-DD-HH",
-      }),
+      // new winston.transports.DailyRotateFile({
+      //   filename: "log-error-%DATE%.log",
+      //   datePattern: "yyyy-MM-DD-HH",
+      // }),
       mongoErrorTransport(uri),
       esTransport,
     ],
