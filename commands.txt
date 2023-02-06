@@ -14,7 +14,7 @@ docker run  -v esvol:/data/usr/elasticsearch/data --name elasticsearch elasticse
 
 docker run --name parcekoi -v parcelkoivol:/usr/src/app  parcelkoibyfoyzul   
 
-docker run --name parcelkoi -v parcelkoi:/usr/src/app -e "MONGODB_HOST=172.17.0.2" parcelkoibyfoyzul
+docker run --rm --name parcelkoi -v parcelkoi:/usr/src/app -e MONGODB_HOST="172.17.0.5" -e ELASTICSEARCH_HOST="172.17.0.2" parcelkoibyfoyzul
 
 
 
