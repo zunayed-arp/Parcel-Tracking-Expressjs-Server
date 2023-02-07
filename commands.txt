@@ -8,3 +8,22 @@ jest --force-exit
 
 
 jest --runInBand --force-exit
+
+
+docker run -d -v mongovol:/data/db --name mongodb mongo
+
+docker run  -v esvol:/data/usr/elasticsearch/data --name elasticsearch elasticsearch:8.6.1
+
+
+docker run --name parcekoi -v parcelkoivol:/usr/src/app  parcelkoibyfoyzul   
+
+docker run --rm --name parcelkoi -v parcelkoi:/usr/src/app -e MONGODB_HOST="172.17.0.5" -e ELASTICSEARCH_HOST="172.17.0.2" parcelkoibyfoyzul
+
+ docker network inspect bridge
+
+
+ docker run --rm --name percelkoi -v ${PWD}/usr/src/app -v /usr/src/app/node_modules -e MONGODB_HOST="172.17.0.3" parcelkoi
+
+
+
+
